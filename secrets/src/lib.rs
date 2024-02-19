@@ -1,14 +1,14 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+mod signing;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+extern crate serde;
+extern crate rmp_serde as rmps;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, PartialEq, Deserialize, Serialize)]
+pub struct Message {
+    msg_id: u64,
+    beacon_id: u64,
+    nonce: u32,
+    cmd: String
 }
