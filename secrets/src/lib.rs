@@ -8,7 +8,7 @@ use rustflake::Snowflake;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Deserialize, Serialize)]
-pub struct Message {
+pub   struct Message {
     msg_id: i64,
     beacon_id: i64,
     nonce: i32,
