@@ -5,10 +5,8 @@ defaults:
     working-directory: secrets
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  schedule:
+    - cron: "16 10 * * *"
 
 env:
   CARGO_TERM_COLOR: always
