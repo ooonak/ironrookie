@@ -1,9 +1,9 @@
-use std::path::Path;
-use ed25519_dalek::{SigningKey, VerifyingKey};
-use ed25519_dalek::pkcs8::{EncodePrivateKey, EncodePublicKey};
 use ed25519_dalek::pkcs8::spki::der::pem::LineEnding;
+use ed25519_dalek::pkcs8::{EncodePrivateKey, EncodePublicKey};
+use ed25519_dalek::{SigningKey, VerifyingKey};
 use rand_core::OsRng;
 use rmps::decode::Error;
+use std::path::Path;
 
 pub fn write_new_signing_key_set(path: &Path) -> Result<bool, Error> {
     if !path.is_dir() {
@@ -19,11 +19,13 @@ pub fn write_new_signing_key_set(path: &Path) -> Result<bool, Error> {
 
     let mut csprng = OsRng;
     let signing_key: SigningKey = SigningKey::generate(&mut csprng);
-    signing_key.write_pkcs8_pem_file(private_key, LineEnding::default())
+    signing_key
+        .write_pkcs8_pem_file(private_key, LineEnding::default())
         .expect("Could not create private signing key");
 
     let verifying_key: VerifyingKey = signing_key.verifying_key();
-    verifying_key.write_public_key_pem_file(public_key, LineEnding::default())
+    verifying_key
+        .write_public_key_pem_file(public_key, LineEnding::default())
         .expect("Could not create public signing key");
 
     Ok(true)
