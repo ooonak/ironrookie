@@ -1,9 +1,5 @@
 name: cargo-checkmate Continuous Integration
 
-defaults:
-run:
-  working-directory: secrets
-
 on: pull_request
 jobs:
   phases:
