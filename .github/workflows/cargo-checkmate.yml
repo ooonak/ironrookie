@@ -6,7 +6,7 @@ defaults:
 
 on:
   schedule:
-    - cron: "16 10 * * *"
+    - cron: '20 16 * * *'
 
 env:
   CARGO_TERM_COLOR: always
