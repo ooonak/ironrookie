@@ -1,4 +1,4 @@
-name: Rust
+name: Cargo checkmate
 
 defaults:
   run:
@@ -24,4 +24,3 @@ jobs:
       run: cargo install cargo-checkmate
     - name: Run checkmate
       run: cargo checkmate
-
