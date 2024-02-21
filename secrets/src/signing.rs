@@ -1,11 +1,11 @@
 // https://docs.rs/ed25519-dalek/latest/ed25519_dalek/index.html
 
 use ed25519_dalek::pkcs8::spki::der::pem::LineEnding;
+use ed25519_dalek::pkcs8::Error;
 use ed25519_dalek::pkcs8::{DecodePrivateKey, DecodePublicKey};
 use ed25519_dalek::pkcs8::{EncodePrivateKey, EncodePublicKey};
 use ed25519_dalek::{Signature, Signer, SigningKey, Verifier, VerifyingKey, SIGNATURE_LENGTH};
 use rand_core::OsRng;
-use rmps::decode::Error;
 use std::path::Path;
 
 const SIGNING_KEY_NAME: &'static str = "signing.pem";
