@@ -80,10 +80,13 @@ pub fn write_new_signing_key_set(path: &Path) -> Result<bool, Error> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::fs;
 
     #[test]
     fn test_sign_and_verify_sign() {
-        let path = Path::new("/tmp");
+        let path = Path::new("/tmp/test_sign_and_verify_sign");
+        fs::create_dir_all(path).unwrap();
+
         assert_eq!(write_new_signing_key_set(path).unwrap(), true);
 
         let sign = Sign::new(path);
@@ -104,6 +107,7 @@ mod tests {
 
         std::fs::remove_file(path.join(SIGNING_KEY_NAME)).unwrap();
         std::fs::remove_file(path.join(VERIFYING_KEY_NAME)).unwrap();
+        fs::remove_dir(path).unwrap();
     }
 
     #[test]
